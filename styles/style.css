@@ -38,6 +38,10 @@ strong {
 	background: #49A5D3;
 }
 
+.current{
+	background: #49A5D3;
+}
+
 /* Contenu principal */
 #contenu {
 	color: #363B29;

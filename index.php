@@ -22,7 +22,7 @@
 			<div id="entete">
 				<h1>
 			<img alt="" src="images/logo.gif" width="50"/>
-			<span>bOOk</span> <font size="4"><?php include("version");?></font>
+			<span>bOOk</span> <font size="4"><?php include("include/version");?></font>
 		</h1>
 		<p class="sous-titre">
 			<strong>Gestion de fiches lectures</strong>
@@ -36,7 +36,7 @@
 					// test si les variables sont définies
 					if (isset($_POST['login']) && isset($_POST['pass'])) 
 						{ 
-							include("config.php");
+							include("include/config.php");
 							
 							$login = addslashes($_POST['login']);
 							$pass = addslashes(md5($_POST['pass']));
@@ -98,7 +98,7 @@
 			</div><!-- #contenu -->
 			
 			<p id="copyright">
-				<?php include("footer"); ?>
+				<?php include("include/footer"); ?>
 			</p>
 			
 		</div><!-- #global -->

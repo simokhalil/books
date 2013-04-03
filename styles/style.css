@@ -1,0 +1,174 @@
+/* --- COULEURS --- */
+
+/* Général */
+body {
+	color: #F0E39E;
+	background: #7D766E;
+}
+a {
+	color: #FF6533;
+}
+a:hover, a:focus {
+	color: #FF4C00;
+}
+strong {
+	color: #A1B55D;
+}
+
+/* Global */
+#global {
+	border-right: 10px solid #181A12; /* Voir -> Note 1 ci-dessous */
+	color: #6F6860;
+	background: #F2EDE7 url(img/gauche.png) repeat-y left top; /* -> 1 */
+}
+
+/* En-tête */
+#entete {
+	background: #F2EDE7;
+}
+
+/* Navigation */
+#navigation {
+	background: #C9C3BE;
+}
+#navigation a {
+	color: #4E4E4E;
+}
+#navigation a:hover, #navigation a:focus {
+	background: #49A5D3;
+}
+
+/* Contenu principal */
+#contenu {
+	color: #363B29;
+	background: url(img/coin.png) no-repeat left top;
+}
+#contenu a {
+	color: #332510;
+}
+#contenu a:hover, #contenu a:focus {
+	color: #6E5122;
+}
+#contenu strong {
+	color: #181A12;
+}
+
+
+/* --- POSITIONNEMENT --- */
+
+/* Page */
+body {
+	padding: 30px 10px 30px 10px;
+}
+#global {
+	width: 90%;
+	overflow: hidden; /* -> 2 */
+	min-width: 700px;
+	max-width: 1000px; /* -> 3 */
+	margin-left: auto;
+	margin-right: auto; /* -> 4 */
+}
+
+/* En-tête */
+#entete {
+	padding: 20px;
+}
+#entete h1 {
+	margin: 0;
+}
+#entete h1 img {
+	float: left;
+	margin: 7px 20px 10px 0;
+}
+#entete .sous-titre {
+	margin: 4px 0 15px 0;
+}
+
+/* Menu de navigation */
+#navigation {
+	width: 180px;
+	float: left; /* -> 5 */
+}
+#navigation ul {
+	margin: 0;
+	padding: 20px 0px;
+	list-style: none;
+}
+#navigation a {
+	display: block;
+	height: 1%; /* -> 6 */
+	padding: 6px 6px 6px 10px;
+	line-height: 1.5;
+	font-size: .9em;
+	text-decoration: none;
+}
+
+/* Contenu */
+#contenu {
+	margin-left: 220px; /* -> 7 */
+	padding: 10px 20px 10px 40px;
+}
+#contenu > :first-child {
+	margin-top: 10px;
+}
+#contenu p, #contenu li {
+	line-height: 1.5;
+}
+
+/* Mention de copyright */
+#copyright {
+	width: 220px;
+	margin: 50px 0 0 0;
+	padding: 5px 5px 5px 5px;
+	text-align: left;
+}
+
+
+
+#login-contenu {
+	/*margin-left: 220px; /* -> 7 */
+	padding: 150px 20px 200px 40px;
+	height:1%;
+}
+#contenu :first-child {
+	margin-top: 10px;
+}
+#contenu p, #contenu li {
+	line-height: 1.5;
+	}
+	
+#login-global {
+	margin: 0 0 20px 0;
+	color: #6F6860;
+	background: #F2EDE7 url(img/login-gauche.png) repeat-y left top; /* -> 1 */
+	}
+	
+
+.login{
+	padding: 12px 0 10px 0;
+	min-height:70px;
+	width: 250px;
+	-moz-border-radius : 10px;
+	background: #494846;
+}
+
+.login-input{
+	height: 20px;
+	width: 200px;
+	-moz-border-radius : 5px;
+	background: #FBFAF8;
+}
+
+.login-submit{
+	width: 170px;
+	-moz-border-radius : 5px;
+	background: #527AB7;
+	color: #FFFFFF;
+}
+
+.retour{
+	width: 170px;
+	-moz-border-radius : 5px;
+	background: #494846;
+	color: #FFFFFF;
+}

@@ -1,34 +1,32 @@
-/* --- STYLES DE BASE POUR LE TEXTE ET LES PRINCIPAUX ÉLÉMENTS --- */
-
-/* Page */
 html {
 	font-size: 100%; /* Voir -> Note 1 à la fin de la feuille de styles. */
 }
-body {
-	margin: 0;
-	padding: 10px 20px; /* Note -> 2 */
-	font-family: Verdana, "Bitstream Vera Sans", "Lucida Grande", sans-serif; /* 3 */
-	font-size: .8em; /* -> 4 */
-	line-height: 1.25; /* -> 5 */
-	color: black;
-	background: white;
-}
+
+
+/* --- STYLES POUR LE TEXTE --- */
 
 /* Titres */
 h1, h2, h3, h4, h5, h6 {
-	margin: 1em 0 .5em 0; /* -> 6 */
+	margin: 1em 0 .5em 0;
 }
-h1, h2 {
+
+h1{
 	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
-	font-weight: normal; /* -> 7 */
-}
-h1 {
-	font-size: 3em; /* -> 8 */
+	font-weight: normal;
+	font-size: 3em; 
 	font-style: italic;
 }
+
+h2{	
+	font-family: Arial, sans-serif;
+	font-weight: bold; 
+	color: #fff;
+}
+
 h2 {font-size: 1.8em;}
 h3 {font-size: 1.2em;}
 h4 {font-size: 1em;}
+
 
 /* Listes */
 ul, ol {
@@ -65,17 +63,19 @@ cite {
 	font-style: italic;
 }
 
+
 /* Liens */
 a {
-	color: mediumblue;
+	color: #FF6533;
 	text-decoration: underline;
 }
 a:hover, a:focus {
 	color: crimson;
 }
 a img {
-	border: none; /* -> 10 */
+	border: none; 
 }
+
 
 /* Divers éléments de type en-ligne */
 em {
@@ -84,11 +84,8 @@ em {
 strong {
 	font-weight: bold;
 	color: dimgray;
+	/*color: #A1B55D;*/
 }
-
-
-/* --- STYLES POUR CERTAINS CONTENUS DES GABARITS --- */
-
 pre, code {
 	font-size: 100%;
 	font-family: "Bitstream Vera Mono", "Lucida Console", "Courier New", monospace;
@@ -106,16 +103,248 @@ pre strong {
 	font-weight: normal;
 	color: black;
 }
-#copyright {
-	margin: 20px 0 5px 0;
-	text-align: right;
+
+
+
+
+body {
+	margin: 0;
+	padding: 10px auto;
+	font-family: Verdana, "Bitstream Vera Sans", "Lucida Grande", sans-serif;
 	font-size: .8em;
+	line-height: 1.25;
+	color: black;
+	color: #F0E39E;
+	background: #F2EDE7;
+	padding: 0px 10px 0px 10px;
+}
+
+/* En-tête */
+header {
+	background: #F2EDE7;
+	padding: 20px;
 	color: #848F63;
 }
-#copyright a {
+header h1 {
+	margin: 0;
+}
+header h1 img {
+	float: left;
+	margin: 7px 5px 5px 0;
+}
+header .sous-titre {
+	margin: 4px 0 15px 0;
+}
+
+
+/* Contenu principal */
+article {
+	color: #363B29;
+	/*background: url(img/coin.png) no-repeat left top;*/
+	/*margin-left: 220px;*/
+	padding: 0px 20px 0px 40px;
+	min-height: 440px;
+}
+article a {
+	color: #332510;
+}
+article a:hover, article a:focus {
+	color: #6E5122;
+}
+article strong {
+	color: #181A12;
+}
+article p, article li {
+	line-height: 1.5;
+	line-height: 1.5;
+}
+
+
+/* Pieds de page */
+footer {
+	width: 70%;
+	margin: 1px auto;
+	padding: 5px 5px 0px 5px;
+	text-align: center;
+	font-size: .8em;
+	color: #848F63;
+	border-top: 1px solid #000;
+}
+
+footer a {
 	color: #848F63;
 	text-decoration: none;
 }
-#copyright a:hover, #copyright a:focus {
+footer a:hover, #copyright a:focus {
 	text-decoration: underline;
 }
+
+
+
+/* Global */
+#global {
+	border-right: 0px solid #181A12;
+	color: #6F6860;
+	/*background: #F2EDE7 url(img/gauche.png) repeat-y left top;*/
+	width: 90%;
+	overflow: hidden;
+	min-width: 700px;
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.login-link {
+	cursor: pointer;
+}
+
+
+.login{
+	display: block;
+	padding: 5px 15px 15px 15px;
+	min-height:200px;
+	width: 230px;
+	background: #494846;
+	margin: 1em auto 1em auto;
+	text-align: left;
+	font-size: 100%;
+	font-family: Arial, sans-serif;
+	line-height: 1.125em;
+	vertical-align: baseline;
+	color: #AEBBAE;
+	-moz-box-shadow: 1px 1px 5px 1px #656565;
+	-webkit-box-shadow: 1px 1px 5px 1px #656565;
+	-o-box-shadow: 1px 1px 5px 1px #656565;
+	box-shadow: 1px 1px 5px 2px #656565;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5);
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
+
+.login-p{
+	margin: 0 0 10px 0;
+	font-size: 0.875em;
+	vertical-align: baseline;
+	background: transparent;
+	display: block;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	
+}
+
+.login-input{
+	display: inline-block;
+	height: 20px;
+	background-repeat: no-repeat;
+	background-position: 3px center;
+	margin: 5px 5px 5px 5px;
+	background: #FBFAF8;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 202px;
+	padding: 5px;
+	font-size: 1.2em;
+	border: 1px solid #EDEBE6;
+	vertical-align: middle;
+}
+.login-submit{
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	height: 25px;
+	background-color: #1E52A1;
+	box-sizing: border-box;
+	margin: 2px auto;
+	color: #fff;
+	vertical-align: middle;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 0px solid #EDEBE6;
+	-webkit-box-align: center;
+	text-align: center;
+	width: 202px;
+	padding: 5px;
+	font-size: 1.2em;
+	font-weight: bold;
+	line-height: 1;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow: inset 0 20px 20px rgba(255,255,255,0.3);
+	-webkit-box-shadow: inset 0 20px 20px rgba(255,255,255,0.3);
+}
+
+.submit-p{
+	padding: 10px 0 5px 0;
+	text-align: center;
+	font-size: 0.8em;
+}
+
+.login-submit:hover{
+	background-color: #376EBF; 
+	color: #fff;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+}
+
+#inscription{
+	display: none;
+	margin: 0 0 10px 0;
+}
+
+.notif-succes{
+	background: #fffec2;
+	border: 1px solid #f2e1dc;
+	padding: 1em;
+	font-size: 0.875em;
+	display: block;
+	font-family: Arial, sans-serif;
+	color: #413A32;
+	width: 300px;	
+	margin: 1em auto;	
+	moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px
+}
+
+.notif-erreur{
+	background: #f2e1dc;
+	border: 1px solid #f3c5c1;
+	padding: 1em;
+	font-size: 0.875em;
+	display: block;
+	font-family: Arial, sans-serif;
+	color: #413A32;
+	width: 300px;	
+	margin: 1em auto;	
+	moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px
+}
+
+
+.notif-close{
+	float: right;
+	display: block;
+	height: 16px;
+	width: 16px;
+	text-indent: -3000em;
+	background: transparent url(../images/dialog-close.png) no-repeat center;
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	vertical-align: baseline;
+}
+
+.notif-erreur:hover .notif-close, .notif-succes:hover .notif-close{
+	background: #f3c5c1;
+	opacity: 1;
+}
+
+
+

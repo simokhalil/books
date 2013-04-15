@@ -9,11 +9,11 @@
 			include("include/config.php");
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="ISO-8859-1" />
 		<title>
-			bOOk - Gestion de fiches lectures
+			BookCase - Gestion de fiches lectures
 		</title>
 		
 		<link rel="stylesheet" type="text/css" href="styles/base.css" media="screen" />
@@ -70,12 +70,13 @@
 						if($result= mysql_fetch_object($requete))
 						{
 							session_start ();
-							// enregistrement des paramètres de l'admin
+							// enregistrement des paramètres dans la session
 							$_SESSION['login'] = $login;
 							$_SESSION['pass'] = $pass;
 							$_SESSION['nom'] = $result->nom;
 							$_SESSION['prenom'] = $result->prenom;
 							$_SESSION['role'] = $result->role;
+							$_SESSION['image'] = $result->image;
 							
 							// redirection vers l'accueil
 							header ('location: home.php'); 
@@ -83,7 +84,8 @@
 						else 
 						{ 
 							// pas reconnu
-							print("<center>Nom d'utilisateur ou mot de passe incorrect!</center>"); 
+							$errorMSG = "Nom d'utilisateur ou mot de passe incorrect!";
+							print("<p id=\"notif\" class=\"notif-erreur\">".$errorMSG." <a id=\"notif-close\" href=\"#\" class=\"notif-close\">Close</a></p>"); 
 						}  
 					}  
 					else
@@ -145,8 +147,8 @@
 													$registerMSG = "Inscription réussie !";
 													  
 													// On le met des variables de session pour stocker le nom de compte et le mot de passe :
-													$_SESSION["login"] = $login;
-													$_SESSION["pass"] = $pass;
+													//$_SESSION["login"] = $login;
+													//$_SESSION["pass"] = $pass;
 												}
 										   
 												// Sinon on affiche un message d'erreur. 

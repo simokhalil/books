@@ -1,6 +1,6 @@
 <?php
 	session_start();  
-	if (!isset($_SESSION['login']) OR !isset($_SESSION['pass'])) 
+	if (!isset($_SESSION['login']) OR !isset($_SESSION['pass']) OR $_SESSION['login']!= "admin") 
 		{
 			header("location: ./") ; 
 		}
@@ -33,12 +33,13 @@
 			</form>
 		</div>
 		<h1>
-			<img alt="" src="images/logo1.png"/>
+			<img alt="" src="images/logo.gif" width="50"/>
 			<span><font color="#5F84BC" size="7">B</font>ook<font color="#5F84BC" size="7">C</font>ase</span> <font size="4"><?php include("include/version");?></font>
 		</h1>
 		<p class="sous-titre">
 			<strong>Gestion de fiches lectures</strong>
 		</p>
+		
 		
 	</header><!-- #entete -->
 
@@ -59,25 +60,20 @@
 	
 	<div id="contenu">
 		<aside id="menu"><h2>Menu</h2>
-				<a href="./" class="current"><img src="styles/img/puce1.png" width="10"> Accueil</a>
+				<a href="./"><img src="styles/img/puce1.png" width="10"> Accueil</a>
 				<a href="livres.php"><img src="styles/img/puce2.png" width="10"> Livres</a>
 				<a href="fiche.php"><img src="styles/img/puce3.png" width="10"> Mes fiches lecture</a>
 				<a href="<?php print("profile.php?user=".$_SESSION['login'])?>"><img src="styles/img/puce4.png" width="10"> Mon profil</a>
 				<?php
 					if($_SESSION['role']=='admin')
 					{
-						print("<a href=\"admin.php\"><img src=\"styles/img/puce5.png\" width=\"10\"> Administration</a>");
+						print("<a href=\"admin.php\" class=\"current\"><img src=\"styles/img/puce5.png\" width=\"10\"> Administration</a>");
 					}
 				?>
 			
 		</aside><!-- #navigation -->
 		<article>		
-			<h2><img src="styles/img/icone_accueil.png" width="25"> Accueil</h2>
-			<h3 class="profil-cat">Derniers livres ajoutés</h3>
-			<br><br><br><br><br>
-			<h3 class="profil-cat">Dernier auteurs ajoutés</h3>
-			<br><br><br><br><br>
-			<h3 class="profil-cat">Mes dernières fiches</h3>
+			<h2><img src="styles/img/icone_admin.png" width="25"> Administration</h2>
 			
 			
 			

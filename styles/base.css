@@ -342,7 +342,7 @@ footer a:hover, #copyright a:focus {
 }
 
 .notif-erreur:hover .notif-close, .notif-succes:hover .notif-close{
-	background: #f3c5c1;
+	background-color: #f3c5c1;
 	opacity: 1;
 }
 

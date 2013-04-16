@@ -115,3 +115,7 @@ function ajout_fiche_fermer(){
 function liste_livres(){
 	$('#listeLivres').toggle("slow");
 }
+
+function lienPreRemp(){
+	alert("OK");
+}

@@ -146,18 +146,33 @@
 						<td>Titre</td> <td>Auteur</td> <td>Nb Pages</td> <td>Genre</td>
 					</tr>
 				<?php
-					$requete = mysql_query("SELECT * FROM livre,genre,auteur,ecritpar,livregenre WHERE genre.id=livregenre.idGenre AND livregenre.idLivre=livre.id AND ecritpar.idLivre=livre.id AND ecritpar.idAuteur=auteur.id");
+					$requeteLivre = mysql_query("SELECT * 
+											FROM livre,auteur,ecritpar
+											WHERE ecritpar.idLivre=livre.id AND ecritpar.idAuteur=auteur.id");
 					$i=0;
-					while($result=mysql_fetch_object($requete))
+					while($result=mysql_fetch_object($requeteLivre))
 					{
 						$i++;
+						$requeteGenre = mysql_query("SELECT libelle 
+													FROM genre,livre, livregenre 
+													WHERE genre.id=livregenre.idGenre AND livre.id=livregenre.idLivre AND livre.titre = '".$result->titre."'");
 						if($i%2==1)
 						{
-							print("<tr bgcolor=\"#DFDFDF\"><td>{$result->titre}</td> <td>{$result->nom}</td> <td>{$result->nbPages}</td> <td>{$result->libelle}</td></tr>");
+							print("<tr bgcolor=\"#DFDFDF\"><td>{$result->titre}</td> <td>{$result->nom}</td> <td>{$result->nbPages}</td> <td>");
+								while($resultGenre = mysql_fetch_object($requeteGenre))
+								{
+									print($resultGenre->libelle." ");
+								}							
+							print("</td></tr>");
 						}
 						else
 						{
-							print("<tr><td>{$result->titre}</td> <td>{$result->nom}</td> <td>{$result->nbPages}</td> <td>{$result->libelle}</td></tr>");
+							print("<tr><td>{$result->titre}</td> <td>{$result->nom}</td> <td>{$result->nbPages}</td> <td>");
+							while($resultGenre = mysql_fetch_object($requeteGenre))
+							{
+								print($$resultGenre->libelle." ");
+							}							
+							print("</td></tr>");
 						}
 					}
 				?>

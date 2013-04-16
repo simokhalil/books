@@ -10,7 +10,12 @@ include("include/config.php");
 include("include/amazonAPI.php");
  
 //recherche des résultats dans la base de données
-$result =   mysql_query('SELECT livre.image,nbPages,titre,nom FROM livre,auteur,ecritpar WHERE auteur.id=ecritpar.idAuteur AND livre.id=ecritpar.idLivre AND titre LIKE \'' . safe( $_GET['q'] ) . '%\' LIMIT 0,20' );
+$result =   mysql_query('SELECT livre.image,nbPages,titre,nom 
+							FROM livre,auteur,ecritpar
+							WHERE auteur.id=ecritpar.idAuteur 
+								AND livre.id=ecritpar.idLivre 
+								AND titre LIKE \'' . safe( $_GET['q'] ) . '%\' LIMIT 0,20' );
+
  
 // affichage d'un message "pas de résultats"
 if( mysql_num_rows( $result ) == 0 )
@@ -80,6 +85,10 @@ else
 			print("<i>".$post->nom."</i><br />");
 			print("Nombre de pages : ".$post->nbPages."<br />");
 			
+			print("Genre : ");
+			
+			print("<br />");
+			
 			?>
 			
 			<br /><br />
@@ -87,7 +96,14 @@ else
             <!--<p class="url"><?php echo $post->guid; ?></p>-->
         </p>
 	</td></tr></table></p>
+	
     <?php
+	$titre = $post->titre;
+			$genre = mysql_query('SELECT libelle FROM livre,livregenre,genre WHERE livre.id=livregenre.idLivre AND genre.id=livregenre.idGenre AND livre.titre = \''.$titre.'\'');
+			while(mysql_fetch_object($genre))
+			{
+				print($genre->libelle." ");
+			}			
     }
 }
  

@@ -432,6 +432,10 @@ footer a:hover, #copyright a:focus {
 	background: #F2EDE7;
 	display: none;
 }
+#ajoutLivre a, #ajoutFiche a{
+	padding:0;
+	margin: 0;
+}
 
 #ajoutFiche{
 	max-width: 560px;
@@ -530,7 +534,7 @@ footer a:hover, #copyright a:focus {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
-	vertical-align: baseline;
+	vertical-align: top;
 }
 
 .notif-erreur:hover .notif-close, .notif-succes:hover .notif-close, #ajoutFiche:hover .notif-close, #ajoutLivre:hover .notif-close{

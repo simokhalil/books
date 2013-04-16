@@ -58,7 +58,7 @@ function aws_signed_request($region, $params, $public_key, $private_key, $associ
 	//print($request);
 	
 	/* Extracion du contenu du fichier XML retourné par Amazon */
-	$xml_response = file_get_contents($request);
+	@$xml_response = file_get_contents($request);
     
     if ($xml_response === False)
     {
@@ -98,7 +98,7 @@ class AmazonProductAPI
         {
             if ($response === False)
             {
-                throw new Exception("Connexion à Amazon impossible");
+                throw new Exception("<center style=\"color:#ff0000;font-weight:bold;\">Connexion à Amazon impossible!</center>");
             }
             else
             {

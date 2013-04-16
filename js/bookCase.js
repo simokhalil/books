@@ -96,6 +96,7 @@ function ajout_livre_ouvrir(){
 	$('#ajoutLivre').toggle("slow");
 	var val = $('#q').val();
 	$('#titre').val(val);
+	$('#ajoutFiche').hide("slow");
 }
 
 function ajout_livre_fermer(){
@@ -104,6 +105,7 @@ function ajout_livre_fermer(){
 
 function ajout_fiche_ouvrir(){
 	$('#ajoutFiche').show("slow");
+	$('#ajoutLivre').hide('slow');
 }
 
 function ajout_fiche_fermer(){

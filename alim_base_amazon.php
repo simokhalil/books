@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="iso-8859-1">
-		
-	</head>
 <?php
 
 include("include/config.php");
 include("include/amazonAPI.php");
 
-print("<center><i>Séléctionnez un item ou continuez la saisie manuelle</i></center><br>");
+
 if (isset($_GET["q"]))
 {	
 	$obj = new AmazonProductAPI();
@@ -29,12 +23,12 @@ if (isset($_GET["q"]))
 	print("<ul>");
 	for($i=0; $i<count($items); $i++)
 	{
-		// if (strtolower($items[$i]->ItemAttributes->Title) == "le rouge et le noir")
 		if ($i<5)
 		{
-			$titre = utf8_encode($items[$i]->ItemAttributes->Title);
-			$auteur = utf8_encode($items[$i]->ItemAttributes->Author);
-			echo "<li class=\"lienAmazon\" onClick=\"lienPreRemp(this);\"><a href=\"#\" id=\"{$titre}\">{$titre}</a>  <i>({$auteur})</i></li>";
+			$titre = utf8_decode($items[$i]->ItemAttributes->Title);
+			$auteur = $items[$i]->ItemAttributes->Author;
+			$idTitre = strtr($titre,'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ','aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
+			echo "<li class=\"lienAmazon\"><a href=\"#\" onClick=\"javascript:lienPreRemp(this.id);\" id=\"".$idTitre."\">".utf8_encode($titre)."</a>  <i>({$auteur})</i></li>";
 		}
 	}
 	print("</ul>");
@@ -46,25 +40,28 @@ else
 	
 	try
 	{
-		$keyword = strtr($_GET['titre'],'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ','aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
-		$result = $obj->getItemByKeyword($keyword);
+		$titre = $_GET['titre'];
+		$result = $obj->searchProducts($titre); //on effectue la recherche sur Amazon par titre
 	}
 	catch(Exception $e)
 	{
 		echo $e->getMessage();
 	}
-	$items = $result->Items->Item;
-	for($i=0; $i<count($items); $i++)
+	$items = $result->Items->Item->ItemAttributes;
+	$anneeProd = explode('-', $items->PublicationDate);
+	
+	if(isset($result->Items->Item->EditorialReviews->EditorialReview->Content))
 	{
-		if (strtolower($items[$i]->ItemAttributes->Title) == "le rouge et le noir")
-		{
-			echo "<br>Titre : {$result->Items->Item->ItemAttributes->Title}<br>";
-			echo "<br>Auteur : {$result->Items->Item->ItemAttributes->Author}<br>";
-			echo "Pages : {$result->Items->Item->ItemAttributes->NumberOfPages}<br>";
-			echo "Date de publication : {$result->Items->Item->ItemAttributes->PublicationDate}<br>";
-			echo "Editeur : {$result->Items->Item->ItemAttributes->Publisher}<br>";
-		}
+		$tab = array('titre'=> htmlspecialchars($items->Title), 'auteur'=>"{$items->Author}", 'editeur'=>"{$items->Publisher}", 'nbPages'=>"{$items->NumberOfPages}", 'annee'=>"{$anneeProd[0]}", 'image'=>"{$result->Items->Item->LargeImage->URL}", 'resume'=>"{$result->Items->Item->EditorialReviews->EditorialReview->Content}");
 	}
+	else{
+		$tab = array('titre'=> htmlspecialchars($items->Title), 'auteur'=>"{$items->Author}", 'editeur'=>"{$items->Publisher}", 'nbPages'=>"{$items->NumberOfPages}", 'annee'=>"{$anneeProd[0]}", 'image'=>"{$result->Items->Item->LargeImage->URL}", 'resume'=>"");
+	}
+	echo json_encode($tab);
+			// echo $result->Items->Item->ItemAttributes->Title;
+			// echo "<br>Auteur : {$result->Items->Item->ItemAttributes->Author}<br>";
+			// echo "Pages : {$result->Items->Item->ItemAttributes->NumberOfPages}<br>";
+			// echo "Date de publication : {$result->Items->Item->ItemAttributes->PublicationDate}<br>";
+			// echo "Editeur : {$result->Items->Item->ItemAttributes->Publisher}<br>";
 }
-
 ?>

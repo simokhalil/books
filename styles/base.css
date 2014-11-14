@@ -21,9 +21,9 @@ h2{
 	font-family: Arial, sans-serif;
 	font-weight: bold; 
 	color: #fff;
+	font-size: 1.8em;
 }
 
-h2 {font-size: 1.8em;}
 h3 {font-size: 1.2em;}
 h4 {font-size: 1em;}
 
@@ -46,19 +46,17 @@ li {
 p {
 	margin: .75em 0;
 }
-li p, blockquote p {
+li p{
 	margin: .5em 0;
 }
 
 /* Citations */
-blockquote, q {
+q {
 	font-size: 1.1em;
 	font-style: italic;
 	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
 }
-blockquote {
-	margin: .75em 0 .75em 24px;
-}
+
 cite {
 	font-style: italic;
 }
@@ -115,13 +113,13 @@ body {
 	line-height: 1.25;
 	color: black;
 	color: #F0E39E;
-	background: #F2EDE7;
+	background: #bfbfbf url("img/bg.gif") 0 0 repeat-x;
 	padding: 0px 10px 0px 10px;
 }
 
 /* En-tête */
 header {
-	background: #F2EDE7;
+	background: #bfbfbf url("img/bg.gif") 0 0 repeat-x;
 	padding: 20px;
 	color: #848F63;
 }
@@ -223,6 +221,9 @@ footer a:hover, #copyright a:focus {
 	border-radius: 7px;
 }
 
+.login-titre{
+	text-align:center;
+}
 .login-p{
 	margin: 0 0 10px 0;
 	font-size: 0.875em;
@@ -347,4 +348,15 @@ footer a:hover, #copyright a:focus {
 }
 
 
+#jquery-loader{
+	border:2px black solid;
+	padding-top:35px;
+	background-color: white;
+	text-align: center;
+}
 
+#jquery-loader-background{background-color: black;}
+
+#admin{
+	display: none;
+}

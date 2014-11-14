@@ -1,4 +1,10 @@
 <?php
+if(!file_exists('include/installed'))
+{
+	header("location:install/");
+}
+else
+{
 	session_start ();  
 	if (isset($_SESSION['login']) && isset($_SESSION['pass'])) 
 		{
@@ -17,11 +23,8 @@
 		</title>
 		
 		<link rel="stylesheet" type="text/css" href="styles/base.css" media="screen" />
-		
-		
+
 		<script src="js/jquery-1.9.1.js"></script>
-		
-		
 		<script language="javascript">
 			function inscription()
 			{
@@ -35,23 +38,26 @@
 				document.getElementById("inscription").style.display = "none";
 			}
 		</script>
-		
-		
 	</head>
+	
 	<body>
-		
 			<header>
 				<h1>
-					<img alt="" src="images/logo1.png"/>
+					<img alt="" src="images/logo.png"/>
 					<span><font color="#5F84BC" size="7">B</font>ook<font color="#5F84BC" size="7">C</font>ase</span> <font size="4"><?php include("include/version");?></font>
 				</h1>
 				<p class="sous-titre">
 					<strong>Gestion de fiches lectures</strong>
 				</p>
 			</header><!-- #entete -->
-
-			
-		
+	<?php
+		if (file_exists('install'))
+		{
+			print("<div class=\"notif-erreur\">Merci de supprimer/renommer le dossier 'install' avant de pouvoir utiliser l'application...</div>");
+		}
+		else
+		{
+	?>
 			<article>
 				<?php
 				
@@ -63,8 +69,8 @@
 						$pass = addslashes(md5($_POST['pass']));
 						
 						//construction de la requête
-						$sql = "SELECT * FROM users WHERE login='$login' AND pass='$pass'";
-						$requete = mysql_query( $sql) or die (mysql_error());
+						$sql = "SELECT * FROM users WHERE login='{$login}' AND pass='{$pass}' AND actif=1";
+						$requete = mysql_query( $sql);
 						
 						//exécution de la requete
 						if($result= mysql_fetch_object($requete))
@@ -77,6 +83,7 @@
 							$_SESSION['prenom'] = $result->prenom;
 							$_SESSION['role'] = $result->role;
 							$_SESSION['image'] = $result->image;
+							$_SESSION['id'] = $result->id;
 							
 							// redirection vers l'accueil
 							header ('location: home.php'); 
@@ -223,7 +230,7 @@
 				<center>
 				<div id="connexion">
 					<div class="login">
-						<h2 style="text-align:center;">Connexion</h2>
+						<h2 class="login-titre">Connexion</h2>
 						
 						<form action="./" method="POST">
 							<p class="login-p">
@@ -244,7 +251,7 @@
 				
 				<div id="inscription">
 					<div class="login">
-						<h2 style="text-align:center;">Inscription</h2>
+						<h2 class="login-titre">Inscription</h2>
 						
 						<form action="index.php" method="POST">
 							<p class="login-p">
@@ -278,19 +285,11 @@
 				</center>
 				
 			</article> <!-- contenu-login -->
-		
 
-		
 			<footer>
 				<?php include("include/footer"); ?>
 			</footer>
-			
-		
-		
-		
-		
-		
-		
+
 		<script>
 			$("#regLink").click(function () {
 				$("#connexion").hide("fast");
@@ -306,14 +305,13 @@
 				$("#notif").hide('slow');
 			});
 		</script>
-		
-		
-		
-		
-		
+	<?php
+		}
+	?>
 	</body>
 </html>
 
 <?php
 	}
+}
 ?>

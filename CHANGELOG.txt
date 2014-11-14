@@ -1,0 +1,29 @@
+-----------------
+--- CHANGELOG ---
+-----------------
+
+v2.0	:	Ajout de fonctionnalités à la partie 'genres' des livres lors de l'ajout
+		Ajout de la partie 'options' dans l'interface d'admin
+		Mise en place du script d'installation
+
+v1.5	: 	Passage en full-jQuery
+		Ajout d'animations/transitions
+		Amélioration visuelle de toutes les pages
+		Mise en place de l'interface d'admin
+		Mise en place des fonctions tri, recherche, pagination sur les tableaux
+
+v1.0 	: 	Création de la page d'accueil (simpliste)
+		Création de la page du profil et intégration de l'image de profil
+		Amélioration de l'interactivité au niveau des champs auteurs
+		Intégration du système de recherche Amazon dans le formulaire d'ajout de livres
+
+v0.5	:	Intégration de Javascript, Ajax, jQuery
+		Mise en place du système de recherche sur Amazon
+		Amélioration visuelle des formulaires avec CSS
+		
+v0.0	:	Mise en place du système d'authentification
+		Création du formulaire d'ajout de livre (Informations éditoriales)
+		Création de la page de recherche
+		Création du formulaire d'ajout de fiche lecture (date et appréciation) 
+		Création de la page de consultation des fiches
+		Création du template CSS

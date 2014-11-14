@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1" />
-</head>
 <?php
 
 function aws_signed_request($region, $params, $public_key, $private_key, $associate_tag)
@@ -98,7 +93,7 @@ class AmazonProductAPI
         {
             if ($response === False)
             {
-                throw new Exception("<center style=\"color:#ff0000;font-weight:bold;\">Connexion à Amazon impossible!</center>");
+                throw new Exception("<center style=\"color:#ff0000;font-weight:bold;\">Connexion &agrave; Amazon impossible!</center>");
             }
             else
             {
@@ -108,27 +103,25 @@ class AmazonProductAPI
                 }
                 else
                 {
-                    throw new Exception("<center>Résultat invalide!</center><br>");
+                    throw new Exception("<center>Pas de propositions disponible!</center><br>");
                 }
             }
-        }
-        
+        }        
         
         private function queryAmazon($parameters)
         {
             return aws_signed_request("fr", $parameters, $this->public_key, $this->private_key, $this->associate_tag);
         }
         
-        
         /**
          * Return les détails du livre recherché
          */
-        public function searchProducts($search, $category, $searchType)
+        public function searchProducts($search)
         {
-            $parameters = array("Operation"     => "ItemSearch",
-                                                    "Title"         => $search,
-                                                    "SearchIndex"   => "Books",
-                                                    "ResponseGroup" => "Medium");
+            $parameters = array("Operation"	=> "ItemSearch",
+								"Title"         => $search,
+								"SearchIndex"   => "Books",
+								"ResponseGroup" => "Medium");
 
             $xml_response = $this->queryAmazon($parameters);
             
